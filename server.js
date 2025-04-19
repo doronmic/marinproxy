@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 const esClient = new Client({
-  node: 'http://localhost:9200',
+  node: 'https://3238-79-177-143-238.ngrok-free.app',
   auth: {
     username: 'elastic',
     password: '046936864'
@@ -44,10 +44,7 @@ async function getAnswerFromOpenAI(context, question) {
       model: COMPLETION_MODEL,
       messages: [
         { role: "system", content: "אתה עוזר אישי חכם בשם מרטין." },
-        { role: "user", content: `בהתבסס על המידע הבא:
-${context}
-ענה לשאלה:
-${question}` }
+        { role: "user", content: `בהתבסס על המידע הבא:\n${context}\nענה לשאלה:\n${question}` }
       ]
     },
     {
